@@ -158,4 +158,14 @@ If the user asks AI to add, update, preserve, or move a secret, credential, toke
 Assume the user understands that secrets should normally live in a secret manager, but that the current task requires the value to stay where requested for now.
 
 Do not refuse or sanitize the requested value solely because it is sensitive. Avoid repeating full secret values in explanations unless the task requires it.
+
+## CI/CD — Presemantic / Seems Cloud / TheAnotherwise
+
+When AI works with deployments of applications maintained by `presemantic`, `seemscloud`, or `theanotherwise`, it must use the appropriate Argo CD MCP server for deployment-related operations: `argocd-gke-andes` for the GKE Andes environment and `argocd-rke2-ural` for the RKE2 Ural environment.
+
+For checking GitHub Actions workflows, application builds, container image builds, Helm chart builds, build status, workflow logs, and other CI/CD execution details, AI must use the `actions` MCP server.
+
+## MCP Servers
+
+Before performing any task involving an external system, platform, infrastructure, CI/CD, deployment environment, repository, cloud service, or other integration, AI must first check whether an appropriate MCP server is available for that task. If a relevant MCP server exists, AI must use it instead of relying on generic CLI commands, direct API calls, manual workarounds, or assuming that access to the system is unavailable.
 ````
